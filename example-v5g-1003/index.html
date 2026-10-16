@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>var FORM_ENDPOINT = 'https://n8n.growthautomateit.com/webhook/wellsent-website-form';</script>
+<!--
+Well Sent Mail prospect page template. Filled by n8n with plain string replacement.
+Tokens (each wrapped in double curly braces): first_name, company, email, slug,
+video_embed_url, idea_N_name, idea_N_desc, idea_N_card, idea_N_cost (N = 1..3).
+HTML-escape every value (& < > " ') before replacing. Card lines go in without
+quote marks; the template adds them.
+-->
+<meta name="robots" content="noindex, nofollow">
+<title>Sarah, this is for you</title>
+<meta name="description" content="Three package ideas for Brightside Payroll.">
+<meta property="og:title" content="Sarah, this is for you">
+<meta property="og:description" content="Three package ideas for Brightside Payroll.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Well Sent Mail">
+<meta property="og:url" content="https://www.wellsentmail.com/example-v5g-1003">
+<meta property="og:image" content="https://www.wellsentmail.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sarah, this is for you">
+<meta name="twitter:image" content="https://www.wellsentmail.com/og-image.jpg">
+<meta name="theme-color" content="#F5EFE1">
+<meta name="color-scheme" content="light only">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&amp;family=Archivo:wght@400;500;600;700&amp;family=Caveat:wght@600;700&amp;display=swap" rel="stylesheet">
+<style>:root{
+--canvas:#F5EFE1;
+--wash:#ECDCC4;
+--card:#FFFDF8;
+--ink:#1C2B3E;
+--ink-soft:rgba(28,43,62,0.74);
+--coral:#D85B41;
+--coral-deep:#B2472F;
+--coral-hover:#96381F;
+--hairline:rgba(28,43,62,0.16);
+--radius:5px;
+--maxw:1140px;
+--shadow-ink:8px 8px 0 var(--ink);
+--shadow-coral:8px 8px 0 var(--coral);
+--font-display:'Fraunces',Georgia,'Times New Roman',serif;
+--font-body:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+--font-hand:'Caveat','Segoe Script',cursive;
+color-scheme:light only;
+}
+*,*::before,*::after{box-sizing:border-box;}
+*{margin:0;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:88px;}
+body{min-height:100dvh;}
+img,svg{display:block;max-width:100%;}
+button,input,textarea,select{font:inherit;color:inherit;}
+a{color:inherit;}
+ul{list-style:none;padding:0;}
+table{border-collapse:collapse;}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto;}
+*,*::before,*::after{
+animation-duration:0.01ms !important;
+animation-iteration-count:1 !important;
+transition-duration:0.01ms !important;
+scroll-behavior:auto !important;
+}
+}
+body{
+font-family:var(--font-body);
+font-weight:400;
+color:var(--ink);
+background:var(--canvas);
+font-size:1.0625rem;
+line-height:1.6;
+}
+h1,h2,h3{
+font-family:var(--font-display);
+font-weight:600;
+line-height:1.1;
+letter-spacing:-0.005em;
+}
+h3{font-weight:700;}
+p{max-width:64ch;color:var(--ink);}
+.visually-hidden{
+position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(1.25rem,4vw,2.5rem);}
+.section{padding-block:clamp(4rem,8vw,7rem);}
+.section--wash{background:var(--wash);}
+.kicker{margin-bottom:0.6rem;}
+.hand{
+font-family:var(--font-hand);
+font-weight:700;
+color:var(--coral);
+display:inline-block;
+transform:rotate(-2deg);
+transform-origin:left center;
+line-height:1;
+}
+.kicker .hand{font-size:clamp(1.4rem,1vw + 1.1rem,1.85rem);}
+a:focus-visible,button:focus-visible,summary:focus-visible{
+outline:3px solid var(--coral-deep);
+outline-offset:3px;
+}
+.btn{
+display:inline-flex;align-items:center;justify-content:center;
+font-family:var(--font-body);
+font-weight:700;font-size:0.975rem;text-decoration:none;
+padding:0.9rem 1.6rem;border-radius:var(--radius);
+border:2px solid var(--ink);cursor:pointer;white-space:nowrap;
+transition:transform .15s ease,box-shadow .15s ease,background-color .15s ease;
+}
+.btn--primary{background:var(--coral-deep);border-color:var(--ink);color:var(--card);box-shadow:var(--shadow-ink);}
+.btn--primary:hover{background:var(--coral-hover);transform:translate(2px,2px);box-shadow:4px 4px 0 var(--ink);}
+.skip-link{
+position:absolute;left:1rem;top:-4rem;z-index:200;
+background:var(--ink);color:var(--card);
+padding:0.75rem 1.25rem;font-weight:700;text-decoration:none;
+transition:top .2s ease;
+}
+.skip-link:focus{top:1rem;}
+.nav{
+position:sticky;top:0;z-index:100;
+background:rgba(245,239,225,0.92);
+-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+border-bottom:1px solid transparent;
+transition:border-color .2s ease,box-shadow .2s ease;
+}
+.nav--scrolled{border-bottom-color:var(--hairline);box-shadow:0 4px 16px rgba(28,43,62,0.06);}
+.nav__inner{display:flex;align-items:center;gap:1rem;padding-block:0.85rem;}
+.nav__brand{
+display:flex;align-items:center;gap:0.55rem;
+font-family:var(--font-display);font-weight:700;font-size:1.15rem;
+text-decoration:none;color:var(--ink);margin-right:auto;
+}
+.card{
+background:var(--card);border:2px solid var(--ink);
+box-shadow:var(--shadow-ink);border-radius:var(--radius);
+padding:clamp(1.5rem,2.4vw,2rem);
+}
+.panel{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);padding:clamp(1.5rem,2.6vw,2.25rem);}
+.panel h3{font-size:1.2rem;margin-bottom:1.1rem;}
+.panel ul{display:flex;flex-direction:column;gap:0.75rem;}
+.panel li{display:flex;gap:0.75rem;font-size:0.98rem;align-items:flex-start;}
+.panel li::before{flex:none;font-weight:700;line-height:1.5;width:1.1em;}
+.panel--include{box-shadow:var(--shadow-ink);}
+.panel--include li::before{content:"✓";color:var(--coral-deep);}
+footer{border-top:1px solid var(--hairline);padding-block:2.5rem;}
+.footer__inner{
+display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center;justify-content:space-between;
+}
+.footer__brand{display:flex;align-items:center;gap:0.5rem;font-family:var(--font-display);font-weight:700;text-decoration:none;color:var(--ink);}
+.footer__links{display:flex;flex-wrap:wrap;gap:1.5rem;}
+.footer__links a{text-decoration:none;color:var(--ink);font-weight:600;font-size:0.92rem;}
+.footer__links a:hover{color:var(--coral-deep);}
+.footer__fine{
+margin-top:1.75rem;padding-top:1.5rem;border-top:1px solid var(--hairline);
+font-size:0.85rem;color:var(--ink-soft);
+}
+.section-intro{margin-top:1rem;font-size:1.08rem;max-width:58ch;}
+.nav__brand .logo{height:34px;width:auto;display:block;}
+.footer__brand .logo{height:28px;width:auto;display:block;}
+@media (max-width:420px){.nav__brand .logo{height:28px;}}
+.pp-head .btn{padding:0.65rem 1.1rem;font-size:0.9rem;box-shadow:5px 5px 0 var(--ink);}
+.pp-head .btn:hover{box-shadow:3px 3px 0 var(--ink);}
+.pp-hero{padding-block:clamp(2.5rem,6vw,4.5rem) clamp(3.5rem,7vw,5.5rem);text-align:center;}
+.pp-greeting{
+display:inline-block;margin:0 auto;max-width:100%;text-wrap:balance;
+font-family:var(--font-hand);font-weight:700;color:var(--coral);
+font-size:clamp(2rem,3vw + 1.6rem,3.8rem);line-height:1.05;
+transform:rotate(-2deg);
+animation:pp-write 1.3s cubic-bezier(.45,.05,.35,1) .15s both;
+}
+@keyframes pp-write{from{clip-path:inset(-0.5em 100% -0.5em -0.5em);}to{clip-path:inset(-0.5em -0.5em -0.5em -0.5em);}}
+.pp-hero h1{
+margin:1rem auto 0;max-width:46ch;text-wrap:balance;
+font-size:clamp(1.5rem,1.2vw + 1.15rem,2.2rem);
+}
+.pp-video{
+position:relative;max-width:900px;margin:clamp(2rem,4vw,2.75rem) auto 0;
+aspect-ratio:16 / 9;overflow:hidden;background:var(--ink);
+border:2px solid var(--ink);border-radius:var(--radius);box-shadow:var(--shadow-coral);
+}
+.pp-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.pp-ideas{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:clamp(2.5rem,5vw,3.5rem);}
+@media (min-width:980px){.pp-ideas{grid-template-columns:repeat(3,1fr);}}
+.pp-idea{display:flex;flex-direction:column;}
+.pp-idea__img{width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover;border:2px solid var(--ink);border-radius:var(--radius);margin-bottom:0.9rem;background:var(--wash);}
+.pp-idea__img[hidden]{display:none;}
+.pp-idea h3{font-size:1.35rem;margin-bottom:0.35rem;}
+.pp-idea__cost{font-weight:700;color:var(--coral-deep);margin-bottom:0.9rem;}
+.pp-idea__card{
+margin-top:auto;padding-top:1rem;border-top:1px solid var(--hairline);
+font-family:var(--font-hand);font-weight:600;font-size:1.5rem;line-height:1.2;color:var(--ink);
+}
+.pp-idea__desc{margin-bottom:1rem;}
+.pp-idea__talk{margin-top:1rem;font-weight:600;font-size:0.95rem;}
+.pp-idea__talk a{color:var(--coral-deep);}
+.pp-hero__cta{margin:2.25rem auto 0;max-width:none;text-align:center;}
+.pp-book{
+display:grid;grid-template-columns:1fr;gap:2rem;
+background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+box-shadow:var(--shadow-coral);padding:clamp(1.5rem,4vw,3rem);
+}
+@media (min-width:980px){.pp-book{grid-template-columns:0.8fr 1.2fr;gap:3rem;align-items:start;}}
+.pp-book h2{font-size:clamp(1.75rem,1.6vw + 1.25rem,2.4rem);}
+.pp-book__copy p{margin-top:1rem;font-size:1.05rem;}
+.pp-book__sig{margin-top:1.5rem;}
+.pp-book__sig span{display:block;font-family:var(--font-hand);font-weight:700;font-size:2.2rem;line-height:1;color:var(--ink);margin-top:0.25rem;transform:rotate(-2deg);transform-origin:left center;}
+.pp-book__alt{margin-top:1.75rem;font-size:0.95rem;color:var(--ink-soft);}
+.pp-book__alt a{color:var(--coral-deep);font-weight:600;}
+.pp-cal{
+width:100%;height:700px;border:1px solid var(--hairline);border-radius:var(--radius);
+background:var(--canvas);
+}
+@media (max-width:600px){.pp-cal{height:820px;}}
+.pp-included{margin-top:clamp(2rem,4vw,3rem);}
+@media (min-width:760px){.pp-included ul{display:grid;grid-template-columns:1fr 1fr;column-gap:2.5rem;}}
+.pp-intro{margin:1rem auto 0;max-width:58ch;font-size:1.05rem;color:var(--ink-soft);text-wrap:balance;}
+.pp-video.is-hidden{display:none;}
+.pp-idea__why{margin-bottom:1rem;padding:0.75rem 0.9rem;background:var(--wash);border-radius:var(--radius);font-size:0.95rem;}
+.pp-idea__why strong{display:block;font-size:0.8rem;font-weight:700;color:var(--coral-deep);margin-bottom:0.15rem;}
+.pp-proof{display:grid;grid-template-columns:1fr;gap:2rem;margin-top:clamp(2rem,4vw,3rem);align-items:start;}
+@media (min-width:860px){.pp-proof{grid-template-columns:1fr 1fr;gap:3rem;}}
+.pp-proof figure{margin:0;} .pp-proof .photo{max-width:100%;margin-bottom:0.75rem;}
+.pp-proof figcaption{font-size:0.92rem;color:var(--ink-soft);}
+.pp-book__steps{margin-top:1.25rem;display:flex;flex-direction:column;gap:0.5rem;}
+.pp-book__steps li{display:flex;gap:0.75rem;font-size:0.98rem;align-items:flex-start;}
+.pp-book__steps li::before{content:"✓";flex:none;font-weight:700;color:var(--coral-deep);width:1.1em;line-height:1.5;}
+.pp-qual{margin-top:1.25rem;font-size:0.95rem;color:var(--ink-soft);font-style:italic;}
+.offer h3{font-size:1.5rem;margin-bottom:0.85rem;}
+.offer p{font-size:1rem;}
+.wrap > h2{font-size:clamp(1.75rem,1.6vw + 1.25rem,2.4rem);max-width:32ch;}
+
+/* ===== v5: ideas first + typography pass ===== */
+body{line-height:1.65;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
+p{text-wrap:pretty;}
+h1,h2,h3{text-wrap:balance;}
+.is-hidden{display:none !important;}
+.pp-hero{text-align:left;padding-block:clamp(2.5rem,6vw,4.5rem) clamp(3.5rem,7vw,5.5rem);}
+.pp-hero__head{max-width:48rem;margin:0 auto;text-align:center;}
+.pp-hero h1{margin:1.1rem auto 0;max-width:28ch;font-size:clamp(1.75rem,1.7vw + 1.3rem,2.65rem);line-height:1.15;letter-spacing:-0.012em;}
+.pp-intro{margin:1.1rem auto 0;max-width:52ch;font-size:clamp(1.05rem,0.3vw + 1rem,1.15rem);line-height:1.6;color:var(--ink-soft);}
+.pp-ideas{display:grid;grid-template-columns:1fr;gap:clamp(1.25rem,2vw,1.75rem);margin-top:clamp(2.5rem,5vw,3.75rem);align-items:stretch;}
+@media (min-width:760px) and (max-width:979px){.pp-ideas{grid-template-columns:1fr 1fr;}}
+@media (min-width:980px){.pp-ideas{grid-template-columns:repeat(3,1fr);}}
+.pp-idea{display:flex;flex-direction:column;overflow:hidden;background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);box-shadow:6px 6px 0 var(--ink);}
+.pp-idea__img{width:100%;height:auto;aspect-ratio:4 / 3;object-fit:cover;margin:0;border:0;border-bottom:2px solid var(--ink);border-radius:0;background:var(--wash);}
+.pp-idea__body{display:flex;flex-direction:column;flex:1;padding:1.35rem 1.4rem 1.5rem;}
+.pp-idea__meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.5rem 0.75rem;margin:0 0 0.7rem;max-width:none;}
+.pp-idea__num{font-size:0.74rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);}
+.pp-idea__cost{margin:0;padding:0.28rem 0.75rem;border-radius:999px;background:#F7E3DC;color:var(--coral-deep);font-size:0.85rem;font-weight:700;white-space:nowrap;}
+.pp-idea h3{margin:0 0 0.6rem;font-size:clamp(1.3rem,0.5vw + 1.12rem,1.5rem);line-height:1.2;letter-spacing:-0.005em;}
+.pp-idea__desc{margin:0 0 1.15rem;font-size:1rem;line-height:1.6;color:var(--ink-soft);}
+.pp-label{margin:0 0 0.3rem;font-family:var(--font-body);font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--coral-deep);}
+.pp-idea__why{margin:0 0 1.15rem;padding:0.85rem 1rem 0.9rem;background:var(--wash);border-radius:var(--radius);}
+.pp-idea__why p:last-child{margin:0;font-size:0.96rem;line-height:1.55;color:var(--ink);}
+.pp-note{margin:auto 0 0;padding:0.95rem 1.1rem 1.05rem;background:var(--canvas);border:1px dashed rgba(28,43,62,0.38);border-radius:var(--radius);transform:rotate(-0.6deg);}
+.pp-note .pp-label{color:var(--ink-soft);}
+.pp-note blockquote{margin:0;font-family:var(--font-hand);font-weight:600;font-size:1.55rem;line-height:1.2;color:var(--ink);}
+.pp-idea__talk{align-self:flex-start;margin-top:1.15rem;padding-bottom:1px;border-bottom:2px solid currentColor;color:var(--coral-deep);font-size:0.95rem;font-weight:700;text-decoration:none;}
+.pp-idea__talk:hover{color:var(--coral-hover);}
+.pp-ideas__note{margin:1.75rem auto 0;max-width:60ch;text-align:center;font-size:0.92rem;color:var(--ink-soft);}
+.pp-watch .wrap{text-align:center;}
+.pp-watch h2{margin:0 auto;max-width:24ch;}
+.pp-watch .section-intro{margin:1rem auto 0;color:var(--ink-soft);}
+.section-intro{line-height:1.6;}
+.wrap > h2{line-height:1.12;letter-spacing:-0.01em;}
+.pp-proof figcaption{line-height:1.55;}
+.panel li{line-height:1.5;}
+.pp-book__copy p{line-height:1.6;}
+.pp-book__steps li{line-height:1.5;}
+/* ===== more quick ideas (AI-filled, no images) ===== */
+.pp-more{padding-block:clamp(3rem,6vw,4.5rem) clamp(3.5rem,7vw,5rem);}
+#more-ideas.is-hidden + .pp-steps{border-top:1px solid var(--hairline);}
+.pp-more__head{max-width:46rem;margin:0 auto;text-align:center;}
+.pp-more__head h2{font-size:clamp(1.5rem,1.2vw + 1.2rem,2.05rem);line-height:1.15;letter-spacing:-0.01em;}
+.pp-more__intro{margin:0.85rem auto 0;max-width:52ch;font-size:1rem;line-height:1.6;color:var(--ink-soft);}
+.pp-more__grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:clamp(1.75rem,3.5vw,2.5rem);}
+@media (min-width:760px){.pp-more__grid{grid-template-columns:repeat(3,1fr);gap:1.25rem;}}
+.pp-quick{display:flex;flex-direction:column;padding:1.1rem 1.2rem 1.15rem;background:var(--card);border:1.5px solid var(--ink);border-radius:var(--radius);box-shadow:3px 3px 0 var(--ink);}
+.pp-quick__top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:0.25rem 0.75rem;margin:0;max-width:none;}
+.pp-quick__name{font-family:var(--font-display);font-weight:700;font-size:1.08rem;line-height:1.25;color:var(--ink);}
+.pp-quick__cost{flex:none;font-size:0.8rem;font-weight:700;color:var(--coral-deep);white-space:nowrap;}
+.pp-quick__line{margin:0.45rem 0 0.35rem;font-family:var(--font-hand);font-weight:600;font-size:1.32rem;line-height:1.2;color:var(--ink);}
+.pp-quick__use{margin:0;font-size:0.9rem;line-height:1.5;color:var(--ink-soft);}
+.pp-quick__talk{align-self:flex-start;margin-top:auto;padding-top:0.75rem;color:var(--coral-deep);font-size:0.86rem;font-weight:700;text-decoration:none;}
+.pp-quick__talk:hover{color:var(--coral-hover);text-decoration:underline;text-underline-offset:3px;}
+/* ===== how it works: 3 steps ===== */
+.pp-steps__head{max-width:46rem;margin:0 auto;text-align:center;}
+.pp-steps__head h2{margin:0 auto;max-width:24ch;font-size:clamp(1.75rem,1.6vw + 1.25rem,2.4rem);line-height:1.12;letter-spacing:-0.01em;}
+.pp-steps__intro{margin:0.9rem auto 0;max-width:50ch;font-size:1.05rem;line-height:1.6;color:var(--ink-soft);}
+.pp-steps__list{display:grid;grid-template-columns:1fr;gap:1.25rem;margin:clamp(2rem,4vw,2.75rem) 0 0;padding:0;list-style:none;}
+@media (min-width:860px){.pp-steps__list{grid-template-columns:repeat(3,1fr);gap:2.5rem;}}
+.pp-step{position:relative;display:flex;flex-direction:column;padding:1.5rem 1.45rem 1.55rem;background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);box-shadow:6px 6px 0 var(--ink);}
+.pp-step__num{margin:0 0 0.8rem;font-family:var(--font-display);font-weight:700;font-size:2.4rem;line-height:1;color:var(--coral-deep);}
+.pp-step h3{margin:0 0 0.55rem;font-size:clamp(1.2rem,0.5vw + 1.05rem,1.38rem);line-height:1.22;}
+.pp-step p{margin:0;font-size:1rem;line-height:1.6;color:var(--ink-soft);}
+.pp-step .pp-step__tag{align-self:flex-start;margin-top:auto;padding:0.28rem 0.75rem;border-radius:999px;background:#F7E3DC;color:var(--coral-deep);font-size:0.82rem;font-weight:700;}
+.pp-step p + .pp-step__tag{margin-top:1.1rem;}
+@media (min-width:860px){
+.pp-step:not(:last-child)::after{content:"→";position:absolute;top:50%;right:-2.05rem;transform:translateY(-50%);font-family:var(--font-display);font-weight:700;font-size:1.6rem;line-height:1;color:var(--coral);}
+}
+
+  .field{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:1rem;}
+  .field label{font-weight:600;font-size:0.95rem;}
+  .field input{width:100%;padding:0.75rem 0.9rem;font-size:1rem;background:var(--canvas);color:var(--ink);border:2px solid var(--ink);border-radius:var(--radius);}
+  .field input:focus-visible{outline:3px solid var(--coral-deep);outline-offset:2px;}
+
+  /* ============ Message forms ============ */
+  .msg-block{max-width:560px;margin:2rem auto 0;text-align:left;}
+  .msg-block__or{text-align:center;margin:0 auto 1rem;}
+  .msg-form__row{display:grid;grid-template-columns:1fr;gap:0 1rem;}
+  @media (min-width:600px){.msg-form__row{grid-template-columns:1fr 1fr;}}
+  .field textarea{
+    font:inherit;width:100%;min-height:120px;padding:0.75rem 0.9rem;font-size:1rem;line-height:1.5;
+    background:var(--canvas);color:var(--ink);
+    border:2px solid var(--ink);border-radius:var(--radius);resize:vertical;
+  }
+  .field textarea:focus-visible{outline:3px solid var(--coral-deep);outline-offset:2px;}
+  .msg-form .btn{width:100%;margin-top:0.25rem;}
+  .msg-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+  .msg-error{margin:0.85rem 0 0;max-width:none;font-size:0.95rem;}
+  .msg-done{padding:1.25rem 0;text-align:center;}
+  .msg-done h3{font-size:1.4rem;margin-bottom:0.5rem;}
+  .msg-done p{margin-inline:auto;}
+  .msg-done:focus{outline:none;}
+  .pp-book .msg-block{margin-top:1.25rem;max-width:none;}
+</style>
+</head>
+<body data-slug="example-v5g-1003" data-email="sarah@example.com" data-first-name="Sarah">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav pp-head" id="top">
+<div class="wrap nav__inner">
+<a class="nav__brand" href="/" target="_blank" rel="noopener noreferrer">
+<img class="logo" src="/images/logo-wordmark.png" width="771" height="120" alt="Well Sent Mail">
+<span class="visually-hidden"> (opens in a new tab)</span></a>
+<a class="btn btn--primary" href="#book">Book a quick 15-min call</a>
+</div>
+</header>
+<main id="main">
+<section class="pp-hero" id="ideas">
+<div class="wrap">
+<div class="pp-hero__head">
+<p class="pp-greeting">Hey Sarah, this is for you</p>
+<h1>Three packages Brightside Payroll could send to operations directors at mid-size clinics</h1>
+<p class="pp-intro">You replied to my email, so instead of a pitch deck I put these together. Each one goes out with your prospect’s company on it, not yours, plus a handwritten card in your rep’s name.</p>
+</div>
+<div class="pp-ideas">
+<article class="pp-idea">
+<img class="pp-idea__img" src="" alt="Mockup of Insulated desk tumbler for Brightside Payroll" loading="lazy" data-mockup>
+<div class="pp-idea__body">
+<p class="pp-idea__meta"><span class="pp-idea__num">Idea 01</span></p>
+<h3>Insulated desk tumbler</h3>
+<p class="pp-idea__desc">A 20 oz steel tumbler that keeps coffee hot through a long shift.</p>
+<div class="pp-idea__why"><p class="pp-label">Why this one for you</p><p>Ops directors live at their desks between back-to-back meetings.</p></div>
+<figure class="pp-note"><figcaption class="pp-label">On the card</figcaption><blockquote>“Saw how many hats you wear. This should keep the coffee hot through all of them.”</blockquote></figure>
+<a class="pp-idea__talk" href="#book" data-idea="Insulated desk tumbler">Book a quick 15-min call</a>
+</div>
+</article>
+<article class="pp-idea">
+<img class="pp-idea__img" src="" alt="Mockup of Leather desk organizer tray for Brightside Payroll" loading="lazy" data-mockup>
+<div class="pp-idea__body">
+<p class="pp-idea__meta"><span class="pp-idea__num">Idea 02</span></p>
+<h3>Leather desk organizer tray</h3>
+<p class="pp-idea__desc">A simple leather valet tray for keys, badges and pens.</p>
+<div class="pp-idea__why"><p class="pp-label">Why this one for you</p><p>It sits on the desk every day and keeps the clutter in one spot.</p></div>
+<figure class="pp-note"><figcaption class="pp-label">On the card</figcaption><blockquote>“For the badge, the keys and the sticky notes. Thought you&#39;d use it daily.”</blockquote></figure>
+<a class="pp-idea__talk" href="#book" data-idea="Leather desk organizer tray">Book a quick 15-min call</a>
+</div>
+</article>
+<article class="pp-idea">
+<img class="pp-idea__img" src="" alt="Mockup of Wireless charging stand for Brightside Payroll" loading="lazy" data-mockup>
+<div class="pp-idea__body">
+<p class="pp-idea__meta"><span class="pp-idea__num">Idea 03</span></p>
+<h3>Wireless charging stand</h3>
+<p class="pp-idea__desc">A slim stand that charges a phone upright at the desk.</p>
+<div class="pp-idea__why"><p class="pp-label">Why this one for you</p><p>Their phone is their pager; it&#39;s always low by 3 pm.</p></div>
+<figure class="pp-note"><figcaption class="pp-label">On the card</figcaption><blockquote>“Your phone works as hard as you do. Figured it could use a break too.”</blockquote></figure>
+<a class="pp-idea__talk" href="#book" data-idea="Wireless charging stand">Book a quick 15-min call</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="section section--wash pp-watch" id="watch">
+<div class="wrap">
+<p class="kicker"><span class="hand">before you pick one</span></p>
+<h2>How a campaign actually runs</h2>
+<p class="section-intro">A short walkthrough: what goes in the box, how the follow-up works, and what it costs.</p>
+<div class="pp-video" id="pp-video-wrap">
+<iframe id="pp-video" src="https://www.youtube-nocookie.com/embed/uNIZRgRJPG0?rel=0&amp;modestbranding=1&amp;enablejsapi=1" title="How a Well Sent Mail campaign runs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<p class="pp-hero__cta"><a class="btn btn--primary" href="#book">Book a quick 15-min call</a></p>
+</div>
+</section>
+<section class="pp-more" id="more-ideas">
+<div class="wrap">
+<div class="pp-more__head">
+<p class="kicker"><span class="hand">or keep it simple</span></p>
+<h2>A few more quick ideas</h2>
+<p class="pp-more__intro">Smaller, cheaper and faster to ship. Good for a wider list, or to mix in with the three above.</p>
+</div>
+<div class="pp-more__grid">
+<article class="pp-quick" data-more><p class="pp-quick__top"><span class="pp-quick__name">Premium notebook</span></p><p class="pp-quick__line">“For the next big plan.”</p><p class="pp-quick__use">Used in every meeting.</p><a class="pp-quick__talk" href="#book" data-idea="Premium notebook">Book a quick 15-min call</a></article>
+<article class="pp-quick" data-more><p class="pp-quick__top"><span class="pp-quick__name">Cable organizer kit</span></p><p class="pp-quick__line">“One less tangle on your desk.”</p><p class="pp-quick__use">Tidies a messy desk in seconds.</p><a class="pp-quick__talk" href="#book" data-idea="Cable organizer kit">Book a quick 15-min call</a></article>
+<article class="pp-quick" data-more><p class="pp-quick__top"><span class="pp-quick__name">Hand cream set</span></p><p class="pp-quick__line">“For the days that never end.”</p><p class="pp-quick__use">Kept in a desk drawer and used daily.</p><a class="pp-quick__talk" href="#book" data-idea="Hand cream set">Book a quick 15-min call</a></article>
+</div>
+</div>
+</section>
+<section class="section section--wash pp-steps" id="how-it-works">
+<div class="wrap">
+<div class="pp-steps__head">
+<p class="kicker"><span class="hand">how it works</span></p>
+<h2>Three steps from your list to booked meetings</h2>
+<p class="pp-steps__intro">Here’s what happens once we say go.</p>
+</div>
+<ol class="pp-steps__list">
+<li class="pp-step">
+<p class="pp-step__num" aria-hidden="true">01</p>
+<h3>We pick the list</h3>
+<p>We pick 50 of your best-fit prospects.</p>
+<p class="pp-step__tag">built with you</p>
+</li>
+<li class="pp-step">
+<p class="pp-step__num" aria-hidden="true">02</p>
+<h3>We send the box</h3>
+<p>We send each one a box built for them, with a handwritten card.</p>
+<p class="pp-step__tag">you approve it first</p>
+</li>
+<li class="pp-step">
+<p class="pp-step__num" aria-hidden="true">03</p>
+<h3>You book the meeting</h3>
+<p>You follow up and book the meeting.</p>
+<p class="pp-step__tag">we tell you when it lands</p>
+</li>
+</ol>
+</div>
+</section>
+<section class="section pp-included-sec" id="included">
+<div class="wrap">
+<p class="kicker"><span class="hand">no fine print</span></p>
+<h2>What’s in every box</h2>
+<div class="pp-proof">
+<figure>
+<img class="photo" src="/images/box-contents.jpg" width="900" height="600" alt="Open package with engraved coasters, a handwritten card, and a QR code card" loading="lazy">
+<figcaption>What lands on their desk: the item, a handwritten card, and a QR code to a page like this one.</figcaption>
+</figure>
+<div class="panel panel--include">
+<h3>Included</h3>
+<ul>
+<li>The list, built with you and verified twice</li>
+<li>The item, personalized to each prospect</li>
+<li>A handwritten card in your rep’s name</li>
+<li>A page with each prospect’s name on it, linked from a QR code in the box</li>
+<li>Tracked shipping and a heads-up when each one lands</li>
+<li>An email sequence in your rep’s name, starting the day after delivery</li>
+<li>Every card and email sent to you for approval before it goes</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ Book a call ============ -->
+<section class="section section--wash" id="book">
+<div class="wrap">
+<div class="pp-book">
+<div class="pp-book__copy">
+<p class="kicker"><span class="hand">fifteen minutes</span></p>
+<h2>Want to talk these through, Sarah?</h2>
+<p>Pick a time that works. Here’s what we’ll cover:</p>
+<ul class="pp-book__steps">
+<li>Who you’re trying to reach, and whether their addresses are findable</li>
+<li>Which of the three ideas fits, or what would</li>
+<li>The next steps</li>
+</ul>
+<p class="pp-qual">This works when one new client is worth $5,000 or more to you. If it’s not, I’ll say so on the call, and the three ideas are yours to use.</p>
+<p class="pp-book__sig">Talk soon,<span>Salvador</span></p>
+<p class="pp-book__alt">Calendar not showing? <a id="pp-cal" href="https://calendly.com/salvador-well-sent-mail/new-meeting?name=Sarah&amp;email=sarah@example.com" target="_blank" rel="noopener noreferrer">Open it in a new tab<span class="visually-hidden"> (opens in a new tab)</span></a>, or send me a message below. I reply within 12–24 hours, Monday through Friday.</p>
+<div class="msg-block" id="message">
+          <form class="msg-form" data-msg-form>
+            <div class="msg-form__row">
+              <div class="field">
+                <label for="pm-name">Your name</label>
+                <input id="pm-name" name="name" type="text" autocomplete="name" required value="Sarah">
+              </div>
+              <div class="field">
+                <label for="pm-email">Your email</label>
+                <input id="pm-email" name="email" type="email" autocomplete="email" required value="sarah@example.com">
+              </div>
+            </div>
+            <div class="field">
+              <label for="pm-msg">Message</label>
+              <textarea id="pm-msg" name="message" rows="5" required></textarea>
+            </div>
+            <div class="msg-hp" aria-hidden="true"><label>Leave this empty<input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label></div>
+            <button class="btn btn--primary" type="submit">Send message</button>
+            <p class="msg-error" hidden>That didn’t go through. You can email me directly at salvador@ssgrowthautomation.com.</p>
+          </form>
+          <div class="msg-done" tabindex="-1" hidden>
+            <h3>Got it.</h3>
+            <p>I’ll reply within 12–24 hours, Monday through Friday.</p>
+          </div>
+        </div>
+</div>
+<iframe class="pp-cal" id="pp-cal-frame" title="Book a call with Salvador" loading="lazy" src="https://calendly.com/salvador-well-sent-mail/new-meeting?embed_domain=www.wellsentmail.com&amp;embed_type=Inline&amp;hide_gdpr_banner=1&amp;name=Sarah&amp;email=sarah@example.com"></iframe>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<div class="footer__inner">
+<a class="footer__brand" href="/" target="_blank" rel="noopener noreferrer">
+<img class="logo" src="/images/logo-wordmark.png" width="771" height="120" alt="Well Sent Mail">
+<span class="visually-hidden"> (opens in a new tab)</span></a>
+<nav class="footer__links" aria-label="Footer">
+<a href="https://www.linkedin.com/in/salvador-santolucito-b04a34363/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+<a href="#message">Send a message</a>
+</nav>
+</div>
+<p class="footer__fine">© <span id="year">2026</span> Well Sent Mail. Built and shipped from Austin, TX.</p>
+</div>
+</footer>
+<script>
+(function(){
+var d = document.body.dataset;
+var filled = d.firstName && d.firstName.indexOf('{{') === -1;
+// Calendly: encoded URLs; a1 pre-fills the first custom question on the event.
+function calUrl(inline, idea){
+var q = [];
+if(inline) q.push('embed_domain=www.wellsentmail.com', 'embed_type=Inline', 'hide_gdpr_banner=1');
+q.push('name=' + encodeURIComponent(d.firstName || ''), 'email=' + encodeURIComponent(d.email || ''));
+if(idea) q.push('a1=' + encodeURIComponent('Interested in: ' + idea));
+return 'https://calendly.com/salvador-well-sent-mail/new-meeting?' + q.join('&');
+}
+var calLink = document.getElementById('pp-cal');
+var calFrame = document.getElementById('pp-cal-frame');
+if(filled){
+if(calLink) calLink.href = calUrl(false);
+if(calFrame) calFrame.src = calUrl(true);
+document.querySelectorAll('[data-idea]').forEach(function(a){
+a.addEventListener('click', function(){
+var idea = a.getAttribute('data-idea');
+if(calFrame) calFrame.src = calUrl(true, idea);
+if(calLink) calLink.href = calUrl(false, idea);
+window.ppTrack && window.ppTrack('idea_clicked', { idea: idea });
+});
+});
+}
+// Video: hide the block if no URL was supplied; convert YouTube links to embeds with the JS API on.
+var wrap = document.getElementById('pp-video-wrap');
+var f = document.getElementById('pp-video');
+if(f){
+var s = f.getAttribute('src') || '';
+if(!s || s.indexOf('{{') !== -1){ if(wrap){ var sec = wrap.closest('section'); (sec || wrap).classList.add('is-hidden'); } }
+else {
+var m = s.match(/(?:youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+if(m){ f.src = 'https://www.youtube-nocookie.com/embed/' + m[1] + '?rel=0&modestbranding=1&enablejsapi=1'; }
+}
+}
+document.querySelectorAll('img[data-mockup]').forEach(function(img){
+var s = img.getAttribute('src') || '';
+if(!s || s.indexOf('{{') !== -1){ img.hidden = true; img.removeAttribute('src'); }
+img.addEventListener('error', function(){ img.hidden = true; });
+});
+var more = document.getElementById('more-ideas');
+if(more){
+var shown = 0;
+more.querySelectorAll('[data-more]').forEach(function(el){
+var nm = el.querySelector('.pp-quick__name');
+var v = nm ? nm.textContent.trim() : '';
+if(!v || v.indexOf('{{') !== -1){ el.classList.add('is-hidden'); } else { shown++; }
+});
+if(!shown) more.classList.add('is-hidden');
+}
+var nav = document.querySelector('.nav');
+if(nav){
+var onScroll = function(){ nav.classList.toggle('nav--scrolled', window.scrollY > 8); };
+onScroll(); window.addEventListener('scroll', onScroll, { passive:true });
+}
+var y = document.getElementById('year'); if(y){ y.textContent = new Date().getFullYear(); }
+})();
+</script>
+<!-- Prospect events: tells n8n what this prospect did on the page -->
+<script>
+const PROSPECT_EVENT_WEBHOOK = 'https://n8n.wellsentmail.com/webhook/prospect-event';
+(function(){
+var d = document.body.dataset;
+if(!d.slug || d.slug.indexOf('{{') !== -1) return; // unfilled template: don't report
+var fired = {};
+function track(event, extra){
+if(fired[event] && event !== 'idea_clicked') return; fired[event] = true;
+var p = { event: event, slug: d.slug, email: d.email || '', at: new Date().toISOString() };
+if(extra) for(var k in extra) p[k] = extra[k];
+var payload = new URLSearchParams(p);
+var sent = false;
+try { sent = !!(navigator.sendBeacon && navigator.sendBeacon(PROSPECT_EVENT_WEBHOOK, payload)); } catch(e) {}
+if(!sent){ try { fetch(PROSPECT_EVENT_WEBHOOK, { method:'POST', body:payload, keepalive:true, mode:'no-cors' }); } catch(e) {} }
+}
+window.ppTrack = track;
+track('page_viewed');
+// Video started (YouTube iframe API; no-op for other hosts)
+var f = document.getElementById('pp-video');
+if(f && /youtube/.test(f.src)){
+window.onYouTubeIframeAPIReady = function(){
+try { new YT.Player('pp-video', { events: { onStateChange: function(e){ if(e.data === YT.PlayerState.PLAYING) track('video_started'); } } }); } catch(e) {}
+};
+var s = document.createElement('script'); s.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(s);
+}
+// Call booked: Calendly posts a message from the inline embed the moment a time is picked
+window.addEventListener('message', function(e){
+if(typeof e.origin === 'string' && e.origin.indexOf('calendly.com') !== -1 && e.data && e.data.event === 'calendly.event_scheduled'){ track('call_booked'); }
+});
+})();
+</script>
+<script>
+(function(){
+  // ---- Forms: send to FORM_ENDPOINT (set at the top of this file) ----
+  function wsmSend(form, extra){
+    var d = new URLSearchParams(new FormData(form));
+    Object.keys(extra).forEach(function(k){ d.append(k, extra[k]); });
+    return fetch(FORM_ENDPOINT, { method:'POST', body:d, headers:{ 'Accept':'application/json' } })
+      .then(function(r){ if(!r.ok) throw new Error('send failed'); });
+  }
+  function wsmMailto(subject, body){
+    window.location.href = 'mailto:salvador@ssgrowthautomation.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  }
+  document.querySelectorAll('form[data-msg-form]').forEach(function(form){
+    var done = form.parentNode.querySelector('.msg-done');
+    var err = form.querySelector('.msg-error');
+    var btn = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var d = new FormData(form);
+      if(d.get('_gotcha')){ form.hidden = true; done.hidden = false; return; }   // spam bot filled the hidden field
+      var subject = 'Website message from ' + d.get('name');
+      if(typeof FORM_ENDPOINT !== 'string' || !FORM_ENDPOINT){
+        wsmMailto(subject, d.get('message') + '\n\n' + d.get('name') + ' (' + d.get('email') + ')');
+        return;
+      }
+      var label = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Sending...'; err.hidden = true;
+      var extra = { form:'message', page:location.pathname, _subject:subject };
+      var slug = document.body.getAttribute('data-slug');
+      if(slug && slug.indexOf('{{') === -1) extra.slug = slug;
+      wsmSend(form, extra)
+        .then(function(){ form.hidden = true; done.hidden = false; done.focus(); })
+        .catch(function(){ btn.disabled = false; btn.textContent = label; err.hidden = false; });
+    });
+  });
+})();
+</script>
+</body>
+</html>
