@@ -10,6 +10,14 @@
   HTML-escape every value (& < > " ') before replacing. Card lines go in without
   quote marks; the template adds them.
 -->
+<!-- ================================================================
+  FORMS: paste your form link between the quotes on the line below.
+  Every form on this page (messages and package-idea requests) sends
+  there. It points at the "Well Sent: Website Forms" workflow in n8n.
+  Left empty, the forms fall back to opening the visitor's email app.
+================================================================= -->
+<script>var FORM_ENDPOINT = 'https://n8n.growthautomateit.com/webhook/wellsent-website-form';</script>
+
 <meta name="robots" content="noindex, nofollow">
 <title>{{first_name}}, this is for you</title>
 <meta name="description" content="Three package ideas for {{company}}.">
@@ -247,7 +255,7 @@
       content:"";position:absolute;left:15px;right:15px;top:15px;height:2px;
       background:var(--hairline);z-index:0;
     }
-    .tracker__node{flex-direction:column;align-items:flex-start;gap:0.85rem;max-width:180px;}
+    .tracker__node{flex-direction:column;align-items:flex-start;gap:0.85rem;max-width:230px;}
   }
 
   /* ============ Shared card ============ */
@@ -407,6 +415,26 @@
   .footer__brand .logo{height:28px;width:auto;display:block;}
   @media (max-width:420px){.nav__brand .logo{height:28px;}}
 
+  /* ============ Message forms ============ */
+  .msg-block{max-width:560px;margin:2rem auto 0;text-align:left;}
+  .msg-block__or{text-align:center;margin:0 auto 1rem;}
+  .msg-form__row{display:grid;grid-template-columns:1fr;gap:0 1rem;}
+  @media (min-width:600px){.msg-form__row{grid-template-columns:1fr 1fr;}}
+  .field textarea{
+    font:inherit;width:100%;min-height:120px;padding:0.75rem 0.9rem;font-size:1rem;line-height:1.5;
+    background:var(--canvas);color:var(--ink);
+    border:2px solid var(--ink);border-radius:var(--radius);resize:vertical;
+  }
+  .field textarea:focus-visible{outline:3px solid var(--coral-deep);outline-offset:2px;}
+  .msg-form .btn{width:100%;margin-top:0.25rem;}
+  .msg-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+  .msg-error{margin:0.85rem 0 0;max-width:none;font-size:0.95rem;}
+  .msg-done{padding:1.25rem 0;text-align:center;}
+  .msg-done h3{font-size:1.4rem;margin-bottom:0.5rem;}
+  .msg-done p{margin-inline:auto;}
+  .msg-done:focus{outline:none;}
+  .pp-book .msg-block{margin-top:1.25rem;max-width:none;}
+
   /* ============ Prospect page ============ */
   .pp-head .btn{padding:0.65rem 1.1rem;font-size:0.9rem;box-shadow:5px 5px 0 var(--ink);}
   .pp-head .btn:hover{box-shadow:3px 3px 0 var(--ink);}
@@ -565,7 +593,32 @@
           <h2>Want to talk these through, {{first_name}}?</h2>
           <p>Pick a time that works. We’ll go over which idea fits {{company}} best, and I’ll send exact numbers for your list after.</p>
           <p class="pp-book__sig">Talk soon,<span>Salvador</span></p>
-          <p class="pp-book__alt">Calendar not showing? <a id="pp-cal" href="https://calendly.com/salvador-well-sent-mail/new-meeting?name={{first_name}}&amp;email={{email}}" target="_blank" rel="noopener noreferrer">Open it in a new tab<span class="visually-hidden"> (opens in a new tab)</span></a> or email <a href="mailto:salvador@ssgrowthautomation.com">salvador@ssgrowthautomation.com</a>. I reply within 12–24 hours, Monday through Friday.</p>
+          <p class="pp-book__alt">Calendar not showing? <a id="pp-cal" href="https://calendly.com/salvador-well-sent-mail/new-meeting?name={{first_name}}&amp;email={{email}}" target="_blank" rel="noopener noreferrer">Open it in a new tab<span class="visually-hidden"> (opens in a new tab)</span></a>, or send me a message here. I reply within 12–24 hours, Monday through Friday.</p>
+          <div class="msg-block" id="message">
+          <form class="msg-form" data-msg-form>
+            <div class="msg-form__row">
+              <div class="field">
+                <label for="pm-name">Your name</label>
+                <input id="pm-name" name="name" type="text" autocomplete="name" required value="{{first_name}}">
+              </div>
+              <div class="field">
+                <label for="pm-email">Your email</label>
+                <input id="pm-email" name="email" type="email" autocomplete="email" required value="{{email}}">
+              </div>
+            </div>
+            <div class="field">
+              <label for="pm-msg">Message</label>
+              <textarea id="pm-msg" name="message" rows="5" required></textarea>
+            </div>
+            <div class="msg-hp" aria-hidden="true"><label>Leave this empty<input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label></div>
+            <button class="btn btn--primary" type="submit">Send message</button>
+            <p class="msg-error" hidden>That didn’t go through. You can email me directly at salvador@ssgrowthautomation.com.</p>
+          </form>
+          <div class="msg-done" tabindex="-1" hidden>
+            <h3>Got it.</h3>
+            <p>I’ll reply within 12–24 hours, Monday through Friday.</p>
+          </div>
+        </div>
         </div>
         <iframe class="pp-cal" id="pp-cal-frame" title="Book a call with Salvador" loading="lazy" src="https://calendly.com/salvador-well-sent-mail/new-meeting?embed_domain=www.wellsentmail.com&amp;embed_type=Inline&amp;hide_gdpr_banner=1&amp;name={{first_name}}&amp;email={{email}}"></iframe>
       </div>
@@ -586,7 +639,7 @@
         <a href="/#offers">Examples</a>
         <a href="/#faq">FAQ</a>
         <a href="https://www.linkedin.com/in/salvador-santolucito-b04a34363/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
-        <a href="mailto:salvador@ssgrowthautomation.com">salvador@ssgrowthautomation.com</a>
+        <a href="/#message">Send a message</a>
       </nav>
     </div>
     <p class="footer__fine">© <span id="year">2026</span> Well Sent Mail. Built on one idea: send something real.</p>
@@ -596,6 +649,40 @@
 <script>
 (function(){
   var d = document.body.dataset;
+
+  // ---- Forms: send to FORM_ENDPOINT (set at the top of this file) ----
+  function wsmSend(form, extra){
+    var d = new URLSearchParams(new FormData(form));
+    Object.keys(extra).forEach(function(k){ d.append(k, extra[k]); });
+    return fetch(FORM_ENDPOINT, { method:'POST', body:d, headers:{ 'Accept':'application/json' } })
+      .then(function(r){ if(!r.ok) throw new Error('send failed'); });
+  }
+  function wsmMailto(subject, body){
+    window.location.href = 'mailto:salvador@ssgrowthautomation.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  }
+  document.querySelectorAll('form[data-msg-form]').forEach(function(form){
+    var done = form.parentNode.querySelector('.msg-done');
+    var err = form.querySelector('.msg-error');
+    var btn = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var d = new FormData(form);
+      if(d.get('_gotcha')){ form.hidden = true; done.hidden = false; return; }   // spam bot filled the hidden field
+      var subject = 'Website message from ' + d.get('name');
+      if(typeof FORM_ENDPOINT !== 'string' || !FORM_ENDPOINT){
+        wsmMailto(subject, d.get('message') + '\n\n' + d.get('name') + ' (' + d.get('email') + ')');
+        return;
+      }
+      var label = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Sending...'; err.hidden = true;
+      var extra = { form:'message', page:location.pathname, _subject:subject };
+      var slug = document.body.getAttribute('data-slug');
+      if(slug && slug.indexOf('{{') === -1) extra.slug = slug;
+      wsmSend(form, extra)
+        .then(function(){ form.hidden = true; done.hidden = false; done.focus(); })
+        .catch(function(){ btn.disabled = false; btn.textContent = label; err.hidden = false; });
+    });
+  });
 
   // Calendly: build properly encoded URLs (handles spaces, apostrophes, and "+" in emails).
   // a1 pre-fills the first custom question on the Calendly event, if it has one.
