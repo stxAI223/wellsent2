@@ -41,7 +41,7 @@
   "name": "Well Sent Mail",
   "url": "https://www.wellsentmail.com/",
   "description": "Personalized direct mail for B2B prospecting: a tracked package with a handwritten card and a personal landing page, followed by an email sequence that starts the day it lands.",
-  "email": "salvador@wellsentmail.com",
+  "email": "Salvador@WellSentMail.com",
   "founder": {
     "@type": "Person",
     "name": "Salvador Santolucito",
@@ -919,11 +919,11 @@
             <button class="btn btn--primary ideas__submit" type="submit">Send me the three ideas</button>
             <p class="ideas__fine">This opens your email app with everything filled in. Hit send there and it comes straight to me. I only use your details to send you the ideas.</p>
           </form>
-          <p class="ideas__error" id="ideas-error" hidden>That didn’t go through. Send the same details to <a href="mailto:salvador@wellsentmail.com">salvador@wellsentmail.com</a> and I’ll get it.</p>
+          <p class="ideas__error" id="ideas-error" hidden>That didn’t go through. Send the same details to <a href="mailto:Salvador@WellSentMail.com">Salvador@WellSentMail.com</a> and I’ll get it.</p>
           <div class="ideas__done" id="ideas-done" tabindex="-1" hidden>
             <h3 id="ideas-done-title">Almost there.</h3>
-            <p id="ideas-done-msg">Your email app should have opened with your details filled in. Once you hit send, you’ll have three ideas in your inbox within a day, from salvador@wellsentmail.com. If one of them fits, reply and tell me which.</p>
-            <p id="ideas-done-help">Email app didn’t open? Send the same details to <a href="mailto:salvador@wellsentmail.com">salvador@wellsentmail.com</a>.</p>
+            <p id="ideas-done-msg">Your email app should have opened with your details filled in. Once you hit send, you’ll have three ideas in your inbox within a day, from Salvador@WellSentMail.com. If one of them fits, reply and tell me which.</p>
+            <p id="ideas-done-help">Email app didn’t open? Send the same details to <a href="mailto:Salvador@WellSentMail.com">Salvador@WellSentMail.com</a>.</p>
           </div>
         </div>
       </div>
@@ -1013,7 +1013,7 @@
             </div>
             <div class="msg-hp" aria-hidden="true"><label>Leave this empty<input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label></div>
             <button class="btn btn--primary" type="submit">Send message</button>
-            <p class="msg-error" hidden>That didn’t go through. You can email me directly at salvador@wellsentmail.com.</p>
+            <p class="msg-error" hidden>That didn’t go through. You can email me directly at Salvador@WellSentMail.com.</p>
           </form>
           <div class="msg-done" tabindex="-1" hidden>
             <h3>Got it.</h3>
@@ -1105,7 +1105,7 @@
       .then(function(r){ if(!r.ok) throw new Error('send failed'); });
   }
   function wsmMailto(subject, body){
-    window.location.href = 'mailto:salvador@wellsentmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = 'mailto:Salvador@WellSentMail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   }
   document.querySelectorAll('form[data-msg-form]').forEach(function(form){
     var done = form.parentNode.querySelector('.msg-done');
@@ -1150,7 +1150,7 @@
         wsmSend(ideasForm, { form:'ideas', page:location.pathname, _subject:subject })
           .then(function(){
             document.getElementById('ideas-done-title').textContent = 'Got it.';
-            document.getElementById('ideas-done-msg').textContent = 'You’ll have three ideas in your inbox within a day, from salvador@wellsentmail.com. If one of them fits, reply and tell me which.';
+            document.getElementById('ideas-done-msg').textContent = 'You’ll have three ideas in your inbox within a day, from Salvador@WellSentMail.com. If one of them fits, reply and tell me which.';
             document.getElementById('ideas-done-help').hidden = true;
             showDone();
           })
