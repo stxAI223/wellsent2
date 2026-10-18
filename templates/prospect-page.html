@@ -612,7 +612,7 @@
             </div>
             <div class="msg-hp" aria-hidden="true"><label>Leave this empty<input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label></div>
             <button class="btn btn--primary" type="submit">Send message</button>
-            <p class="msg-error" hidden>That didn’t go through. You can email me directly at salvador@ssgrowthautomation.com.</p>
+            <p class="msg-error" hidden>That didn’t go through. You can email me directly at salvador@wellsentmail.com.</p>
           </form>
           <div class="msg-done" tabindex="-1" hidden>
             <h3>Got it.</h3>
@@ -658,7 +658,7 @@
       .then(function(r){ if(!r.ok) throw new Error('send failed'); });
   }
   function wsmMailto(subject, body){
-    window.location.href = 'mailto:salvador@ssgrowthautomation.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = 'mailto:salvador@wellsentmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   }
   document.querySelectorAll('form[data-msg-form]').forEach(function(form){
     var done = form.parentNode.querySelector('.msg-done');
