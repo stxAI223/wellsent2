@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>var FORM_ENDPOINT = 'https://n8n.growthautomateit.com/webhook/wellsent-website-form';</script>
 <!--
 Well Sent Mail prospect page template. Filled by n8n with plain string replacement.
 Tokens (each wrapped in double curly braces): first_name, company, email, slug,
@@ -12,9 +13,9 @@ quote marks; the template adds them.
 -->
 <meta name="robots" content="noindex, nofollow">
 <title>Jamie, this is for you</title>
-<meta name="description" content="Three companies to reach, picked for Lone Star EHS Partners.">
+<meta name="description" content="Three package ideas for Lone Star EHS Partners.">
 <meta property="og:title" content="Jamie, this is for you">
-<meta property="og:description" content="Three companies to reach, picked for Lone Star EHS Partners.">
+<meta property="og:description" content="Three package ideas for Lone Star EHS Partners.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Well Sent Mail">
 <meta property="og:url" content="https://www.wellsentmail.com/test-targets-v6">
@@ -237,13 +238,81 @@ background:var(--canvas);
 .offer p{font-size:1rem;}
 .wrap > h2{font-size:clamp(1.75rem,1.6vw + 1.25rem,2.4rem);max-width:32ch;}
 
-/* ===== v6: 3 real target companies, one CTA ===== */
-body{line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
-p{text-wrap:pretty;} h1,h2,h3{text-wrap:balance;}
+/* ===== v5: ideas first + typography pass ===== */
+body{line-height:1.65;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
+p{text-wrap:pretty;}
+h1,h2,h3{text-wrap:balance;}
 .is-hidden{display:none !important;}
-.v6-hero{padding-block:clamp(2.5rem,6vw,4.5rem) clamp(2rem,4vw,3rem);text-align:center;}
-.v6-hero h1{margin:1.1rem auto 0;max-width:26ch;font-size:clamp(1.75rem,1.8vw + 1.3rem,2.7rem);line-height:1.15;letter-spacing:-0.012em;}
-.v6-intro{margin:1.1rem auto 0;max-width:54ch;font-size:clamp(1.05rem,0.3vw + 1rem,1.15rem);color:var(--ink-soft);}
+.pp-hero{text-align:left;padding-block:clamp(2.5rem,6vw,4.5rem) clamp(3.5rem,7vw,5.5rem);}
+.pp-hero__head{max-width:48rem;margin:0 auto;text-align:center;}
+.pp-hero h1{margin:1.1rem auto 0;max-width:28ch;font-size:clamp(1.75rem,1.7vw + 1.3rem,2.65rem);line-height:1.15;letter-spacing:-0.012em;}
+.pp-intro{margin:1.1rem auto 0;max-width:52ch;font-size:clamp(1.05rem,0.3vw + 1rem,1.15rem);line-height:1.6;color:var(--ink-soft);}
+.pp-ideas{display:grid;grid-template-columns:1fr;gap:clamp(1.25rem,2vw,1.75rem);margin-top:clamp(2.5rem,5vw,3.75rem);align-items:stretch;}
+@media (min-width:760px) and (max-width:979px){.pp-ideas{grid-template-columns:1fr 1fr;}}
+@media (min-width:980px){.pp-ideas{grid-template-columns:repeat(3,1fr);}}
+.pp-idea{display:flex;flex-direction:column;overflow:hidden;background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);box-shadow:6px 6px 0 var(--ink);}
+.pp-idea__img{width:100%;height:auto;aspect-ratio:4 / 3;object-fit:cover;margin:0;border:0;border-bottom:2px solid var(--ink);border-radius:0;background:var(--wash);}
+.pp-idea__body{display:flex;flex-direction:column;flex:1;padding:1.35rem 1.4rem 1.5rem;}
+.pp-idea__meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.5rem 0.75rem;margin:0 0 0.7rem;max-width:none;}
+.pp-idea__num{font-size:0.74rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);}
+.pp-idea__cost{margin:0;padding:0.28rem 0.75rem;border-radius:999px;background:#F7E3DC;color:var(--coral-deep);font-size:0.85rem;font-weight:700;white-space:nowrap;}
+.pp-idea h3{margin:0 0 0.6rem;font-size:clamp(1.3rem,0.5vw + 1.12rem,1.5rem);line-height:1.2;letter-spacing:-0.005em;}
+.pp-idea__desc{margin:0 0 1.15rem;font-size:1rem;line-height:1.6;color:var(--ink-soft);}
+.pp-label{margin:0 0 0.3rem;font-family:var(--font-body);font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--coral-deep);}
+.pp-idea__why{margin:0 0 1.15rem;padding:0.85rem 1rem 0.9rem;background:var(--wash);border-radius:var(--radius);}
+.pp-idea__why p:last-child{margin:0;font-size:0.96rem;line-height:1.55;color:var(--ink);}
+.pp-note{margin:auto 0 0;padding:0.95rem 1.1rem 1.05rem;background:var(--canvas);border:1px dashed rgba(28,43,62,0.38);border-radius:var(--radius);transform:rotate(-0.6deg);}
+.pp-note .pp-label{color:var(--ink-soft);}
+.pp-note blockquote{margin:0;font-family:var(--font-hand);font-weight:600;font-size:1.55rem;line-height:1.2;color:var(--ink);}
+.pp-idea__talk{align-self:flex-start;margin-top:1.15rem;padding-bottom:1px;border-bottom:2px solid currentColor;color:var(--coral-deep);font-size:0.95rem;font-weight:700;text-decoration:none;}
+.pp-idea__talk:hover{color:var(--coral-hover);}
+.pp-ideas__note{margin:1.75rem auto 0;max-width:60ch;text-align:center;font-size:0.92rem;color:var(--ink-soft);}
+.pp-watch .wrap{text-align:center;}
+.pp-watch h2{margin:0 auto;max-width:24ch;}
+.pp-watch .section-intro{margin:1rem auto 0;color:var(--ink-soft);}
+.section-intro{line-height:1.6;}
+.wrap > h2{line-height:1.12;letter-spacing:-0.01em;}
+.pp-proof figcaption{line-height:1.55;}
+.panel li{line-height:1.5;}
+.pp-book__copy p{line-height:1.6;}
+.pp-book__steps li{line-height:1.5;}
+/* ===== more quick ideas (AI-filled, no images) ===== */
+.pp-more{padding-block:clamp(3rem,6vw,4.5rem) clamp(3.5rem,7vw,5rem);}
+#more-ideas.is-hidden + .pp-steps{border-top:1px solid var(--hairline);}
+.pp-more__head{max-width:46rem;margin:0 auto;text-align:center;}
+.pp-more__head h2{font-size:clamp(1.5rem,1.2vw + 1.2rem,2.05rem);line-height:1.15;letter-spacing:-0.01em;}
+.pp-more__intro{margin:0.85rem auto 0;max-width:52ch;font-size:1rem;line-height:1.6;color:var(--ink-soft);}
+.pp-more__grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:clamp(1.75rem,3.5vw,2.5rem);}
+@media (min-width:760px){.pp-more__grid{grid-template-columns:repeat(3,1fr);gap:1.25rem;}}
+.pp-quick{display:flex;flex-direction:column;padding:1.1rem 1.2rem 1.15rem;background:var(--card);border:1.5px solid var(--ink);border-radius:var(--radius);box-shadow:3px 3px 0 var(--ink);}
+.pp-quick__top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:0.25rem 0.75rem;margin:0;max-width:none;}
+.pp-quick__name{font-family:var(--font-display);font-weight:700;font-size:1.08rem;line-height:1.25;color:var(--ink);}
+.pp-quick__cost{flex:none;font-size:0.8rem;font-weight:700;color:var(--coral-deep);white-space:nowrap;}
+.pp-quick__line{margin:0.45rem 0 0.35rem;font-family:var(--font-hand);font-weight:600;font-size:1.32rem;line-height:1.2;color:var(--ink);}
+.pp-quick__use{margin:0;font-size:0.9rem;line-height:1.5;color:var(--ink-soft);}
+.pp-quick__talk{align-self:flex-start;margin-top:auto;padding-top:0.75rem;color:var(--coral-deep);font-size:0.86rem;font-weight:700;text-decoration:none;}
+.pp-quick__talk:hover{color:var(--coral-hover);text-decoration:underline;text-underline-offset:3px;}
+/* ===== how it works: 3 steps ===== */
+.pp-steps__head{max-width:46rem;margin:0 auto;text-align:center;}
+.pp-steps__head h2{margin:0 auto;max-width:24ch;font-size:clamp(1.75rem,1.6vw + 1.25rem,2.4rem);line-height:1.12;letter-spacing:-0.01em;}
+.pp-steps__intro{margin:0.9rem auto 0;max-width:50ch;font-size:1.05rem;line-height:1.6;color:var(--ink-soft);}
+.pp-steps__list{display:grid;grid-template-columns:1fr;gap:1.25rem;margin:clamp(2rem,4vw,2.75rem) 0 0;padding:0;list-style:none;}
+@media (min-width:860px){.pp-steps__list{grid-template-columns:repeat(3,1fr);gap:2.5rem;}}
+.pp-step{position:relative;display:flex;flex-direction:column;padding:1.5rem 1.45rem 1.55rem;background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);box-shadow:6px 6px 0 var(--ink);}
+.pp-step__num{margin:0 0 0.8rem;font-family:var(--font-display);font-weight:700;font-size:2.4rem;line-height:1;color:var(--coral-deep);}
+.pp-step h3{margin:0 0 0.55rem;font-size:clamp(1.2rem,0.5vw + 1.05rem,1.38rem);line-height:1.22;}
+.pp-step p{margin:0;font-size:1rem;line-height:1.6;color:var(--ink-soft);}
+.pp-step .pp-step__tag{align-self:flex-start;margin-top:auto;padding:0.28rem 0.75rem;border-radius:999px;background:#F7E3DC;color:var(--coral-deep);font-size:0.82rem;font-weight:700;}
+.pp-step p + .pp-step__tag{margin-top:1.1rem;}
+@media (min-width:860px){
+.pp-step:not(:last-child)::after{content:"→";position:absolute;top:50%;right:-2.05rem;transform:translateY(-50%);font-family:var(--font-display);font-weight:700;font-size:1.6rem;line-height:1;color:var(--coral);}
+}
+/* ===== v6 add-on: 3 real target companies ===== */
+.v6-sec{padding-block:clamp(1rem,3vw,2rem) clamp(3.5rem,7vw,5.5rem);}
+.v6-sec__head{max-width:46rem;margin:0 auto clamp(1.75rem,4vw,2.5rem);text-align:center;}
+.v6-sec__head h2{font-size:clamp(1.6rem,1.4vw + 1.2rem,2.3rem);line-height:1.15;}
+.v6-sec__intro{margin:0.9rem auto 0;max-width:54ch;color:var(--ink-soft);}
+.v6-targets{display:flex;flex-direction:column;gap:clamp(1.75rem,4vw,2.5rem);}
 .v6-targets{display:flex;flex-direction:column;gap:clamp(1.75rem,4vw,2.75rem);padding-bottom:clamp(3rem,6vw,5rem);}
 .v6-t{display:grid;grid-template-columns:1fr;background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);box-shadow:6px 6px 0 var(--ink);overflow:hidden;}
 @media (min-width:860px){.v6-t{grid-template-columns:0.9fr 1.1fr;}}
@@ -264,40 +333,96 @@ p{text-wrap:pretty;} h1,h2,h3{text-wrap:balance;}
 .v6-note blockquote{margin:0;font-family:var(--font-hand);font-weight:600;font-size:1.5rem;line-height:1.22;color:var(--ink);}
 .v6-fu{margin:0;border-left:3px solid var(--coral);padding:0.2rem 0 0.2rem 1rem;}
 .v6-fu p:last-child{margin:0;font-size:0.96rem;line-height:1.55;white-space:pre-line;}
-.v6-watch{text-align:center;}
-.v6-watch h2{margin:0 auto;max-width:24ch;font-size:clamp(1.6rem,1.4vw + 1.2rem,2.2rem);}
-.v6-watch .section-intro{margin:0.9rem auto 0;color:var(--ink-soft);}
-.v6-steps{display:grid;grid-template-columns:1fr;gap:1rem;margin:2rem auto 0;padding:0;list-style:none;max-width:900px;text-align:left;}
-@media (min-width:760px){.v6-steps{grid-template-columns:repeat(3,1fr);}}
-.v6-steps li{background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);padding:1.1rem 1.2rem;box-shadow:4px 4px 0 var(--ink);}
-.v6-steps b{display:block;font-family:var(--font-display);font-size:1.6rem;color:var(--coral-deep);line-height:1;margin-bottom:0.4rem;}
-.v6-cta{text-align:center;}
-.v6-cta__box{max-width:640px;margin:0 auto;background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);box-shadow:var(--shadow-coral);padding:clamp(1.75rem,5vw,3rem);}
-.v6-cta h2{font-size:clamp(1.7rem,1.6vw + 1.25rem,2.4rem);}
-.v6-cta p{margin:1rem auto 0;color:var(--ink-soft);}
-.v6-cta .btn{margin-top:1.75rem;font-size:1.05rem;padding:1rem 1.8rem;white-space:normal;}
-.v6-sig{font-family:var(--font-hand);font-weight:700;font-size:2rem;color:var(--ink);margin-top:1.25rem !important;}
-@media (max-width:520px){.v6-cta .btn{width:100%;}}
+
+  .field{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:1rem;}
+  .field label{font-weight:600;font-size:0.95rem;}
+  .field input{width:100%;padding:0.75rem 0.9rem;font-size:1rem;background:var(--canvas);color:var(--ink);border:2px solid var(--ink);border-radius:var(--radius);}
+  .field input:focus-visible{outline:3px solid var(--coral-deep);outline-offset:2px;}
+
+  /* ============ Message forms ============ */
+  .msg-block{max-width:560px;margin:2rem auto 0;text-align:left;}
+  .msg-block__or{text-align:center;margin:0 auto 1rem;}
+  .msg-form__row{display:grid;grid-template-columns:1fr;gap:0 1rem;}
+  @media (min-width:600px){.msg-form__row{grid-template-columns:1fr 1fr;}}
+  .field textarea{
+    font:inherit;width:100%;min-height:120px;padding:0.75rem 0.9rem;font-size:1rem;line-height:1.5;
+    background:var(--canvas);color:var(--ink);
+    border:2px solid var(--ink);border-radius:var(--radius);resize:vertical;
+  }
+  .field textarea:focus-visible{outline:3px solid var(--coral-deep);outline-offset:2px;}
+  .msg-form .btn{width:100%;margin-top:0.25rem;}
+  .msg-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+  .msg-error{margin:0.85rem 0 0;max-width:none;font-size:0.95rem;}
+  .msg-done{padding:1.25rem 0;text-align:center;}
+  .msg-done h3{font-size:1.4rem;margin-bottom:0.5rem;}
+  .msg-done p{margin-inline:auto;}
+  .msg-done:focus{outline:none;}
+  .pp-book .msg-block{margin-top:1.25rem;max-width:none;}
 </style>
 </head>
-<body data-slug="test-targets-v6" data-email="test@wellsentmail.com" data-first-name="Jamie" data-template="v6">
+<body data-slug="test-targets-v6" data-email="test@wellsentmail.com" data-first-name="Jamie">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="nav pp-head" id="top">
 <div class="wrap nav__inner">
 <a class="nav__brand" href="/" target="_blank" rel="noopener noreferrer">
 <img class="logo" src="/images/logo-wordmark.png" width="771" height="120" alt="Well Sent Mail">
 <span class="visually-hidden"> (opens in a new tab)</span></a>
+<a class="btn btn--primary" href="#book">Book a 15-minute walkthrough</a>
 </div>
 </header>
 <main id="main">
-<section class="v6-hero">
+<section class="pp-hero" id="ideas">
 <div class="wrap">
+<div class="pp-hero__head">
 <p class="pp-greeting">Hey Jamie, this is for you</p>
-<h1>Three real companies Lone Star EHS Partners could start a conversation with</h1>
-<p class="v6-intro">You replied to my email, so instead of a pitch deck I picked three companies you could go after, and what we’d send each one: the package, the handwritten card, and the message your rep sends once it lands.</p>
+<h1>Three packages Lone Star EHS Partners could send to the EHS managers and environmental compliance leads at manufacturing plants, including automotive manufacturers and their suppliers</h1>
+<p class="pp-intro">You replied to my email, so instead of a pitch deck I put these together. Each one goes out with your prospect’s company on it, not yours, plus a handwritten card in your rep’s name.</p>
+</div>
+<div class="pp-ideas">
+<article class="pp-idea">
+<img class="pp-idea__img" src="/test-targets-v6/idea-1.jpg" alt="Mockup of Rugged Rechargeable LED Headlamp for Lone Star EHS Partners" loading="lazy" data-mockup>
+<div class="pp-idea__body">
+<p class="pp-idea__meta"><span class="pp-idea__num">Idea 01</span></p>
+<h3>Rugged Rechargeable LED Headlamp</h3>
+<p class="pp-idea__desc">A durable rechargeable LED headlamp with a comfortable strap and adjustable beam, built for plant floors and tight spaces.</p>
+<div class="pp-idea__why"><p class="pp-label">Why this one for you</p><p>EHS managers inspect dim corners, pits, mezzanines and storage areas on walkthroughs, and a headlamp keeps both hands free for the checklist.</p></div>
+<figure class="pp-note"><figcaption class="pp-label">On the card</figcaption><blockquote>“For the dark corners every inspection eventually finds. At PHI Environmental Consulting we help teams find the clearest path to environmental and safety compliance. If you would like to talk it through, I would enjoy a quick call. Peg Hopkins, PHI Environmental Consulting”</blockquote></figure>
+<a class="pp-idea__talk" href="#book" data-idea="Rugged Rechargeable LED Headlamp">Book a 15-minute walkthrough</a>
+</div>
+</article>
+<article class="pp-idea">
+<img class="pp-idea__img" src="/test-targets-v6/idea-2.jpg" alt="Mockup of Insulated Stainless Coffee Thermos for Lone Star EHS Partners" loading="lazy" data-mockup>
+<div class="pp-idea__body">
+<p class="pp-idea__meta"><span class="pp-idea__num">Idea 02</span></p>
+<h3>Insulated Stainless Coffee Thermos</h3>
+<p class="pp-idea__desc">A plain insulated stainless steel thermos that keeps coffee hot through a long morning, with no logos.</p>
+<div class="pp-idea__why"><p class="pp-label">Why this one for you</p><p>Plant EHS work often starts before the first shift, and this rides along in the truck or bag every early morning.</p></div>
+<figure class="pp-note"><figcaption class="pp-label">On the card</figcaption><blockquote>“For the early shifts that start before the coffee kicks in. We help EHS teams keep compliance running smoothly so the mornings are a little calmer. I would enjoy a quick call if that would help. Peg Hopkins, PHI Environmental Consulting”</blockquote></figure>
+<a class="pp-idea__talk" href="#book" data-idea="Insulated Stainless Coffee Thermos">Book a 15-minute walkthrough</a>
+</div>
+</article>
+<article class="pp-idea">
+<img class="pp-idea__img" src="/test-targets-v6/idea-3.jpg" alt="Mockup of Leather Work Gloves with Debossed Initials for Lone Star EHS Partners" loading="lazy" data-mockup>
+<div class="pp-idea__body">
+<p class="pp-idea__meta"><span class="pp-idea__num">Idea 03</span></p>
+<h3>Leather Work Gloves with Debossed Initials</h3>
+<p class="pp-idea__desc">A pair of quality leather work gloves with their initials debossed on the cuff.</p>
+<div class="pp-idea__why"><p class="pp-label">Why this one for you</p><p>They are out on the floor, in the yard and around equipment every week, and initials keep their good pair from walking off.</p></div>
+<figure class="pp-note"><figcaption class="pp-label">On the card</figcaption><blockquote>“A good pair for the days you are out on the floor. At PHI we work alongside EHS teams on the hands-on side of compliance. If a quick call would help, I would enjoy it. Peg Hopkins, PHI Environmental Consulting”</blockquote></figure>
+<a class="pp-idea__talk" href="#book" data-idea="Leather Work Gloves with Debossed Initials">Book a 15-minute walkthrough</a>
+</div>
+</article>
+</div>
 </div>
 </section>
-<section class="v6-targets wrap" id="targets">
+<section class="v6-sec" id="targets">
+<div class="wrap">
+<div class="v6-sec__head">
+<p class="kicker"><span class="hand">who to send them to</span></p>
+<h2>Three real companies Lone Star EHS Partners could go after</h2>
+<p class="v6-sec__intro">Here’s who I’d send these to first, and how it plays out: the package, the handwritten card, and the message your rep sends once it lands.</p>
+</div>
+<div class="v6-targets">
 <article class="v6-t">
 <div class="v6-t__media"><img class="v6-t__img" src="/test-targets-v6/target-1.jpg" alt="Mockup of Rugged rechargeable LED headlamp for Toyota Motor Manufacturing Texas" loading="lazy" data-mockup></div>
 <div class="v6-t__body">
@@ -328,30 +453,130 @@ p{text-wrap:pretty;} h1,h2,h3{text-wrap:balance;}
 <div class="v6-fu"><p class="pp-label">Your rep’s follow-up after it lands</p><p>Hi [Name], did the gloves make it to your desk? With Taylor ramping up I figured your team has a lot on its plate. Worth 15 minutes to talk through permitting support?</p></div>
 </div>
 </article>
+</div>
+</div>
 </section>
-<section class="section section--wash v6-watch" id="watch">
+<section class="section section--wash pp-watch" id="watch">
 <div class="wrap">
-<p class="kicker"><span class="hand">how it works</span></p>
+<p class="kicker"><span class="hand">before you pick one</span></p>
 <h2>A quick message from the founder</h2>
-<p class="section-intro">Why I started Well Sent Mail and how a campaign runs, in about a minute.</p>
+<p class="section-intro">Why I started Well Sent Mail, how a campaign runs, and what happens next — in about a minute.</p>
 <div class="pp-video" id="pp-video-wrap">
 <iframe id="pp-video" src="https://www.youtube-nocookie.com/embed/gTvIlYLYQf8?rel=0&amp;modestbranding=1&amp;enablejsapi=1" title="A quick message from the founder" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
-<ol class="v6-steps">
-<li><b>01</b>We pick the list of best-fit prospects with you.</li>
-<li><b>02</b>We send each one a package built for them, with a handwritten card. You approve it first.</li>
-<li><b>03</b>Your rep calls when it lands and books the meeting.</li>
+<p class="pp-hero__cta"><a class="btn btn--primary" href="#book">Book a 15-minute walkthrough</a></p>
+</div>
+</section>
+<section class="pp-more" id="more-ideas">
+<div class="wrap">
+<div class="pp-more__head">
+<p class="kicker"><span class="hand">or keep it simple</span></p>
+<h2>A few more quick ideas</h2>
+<p class="pp-more__intro">Smaller, cheaper and faster to ship. Good for a wider list, or to mix in with the three above.</p>
+</div>
+<div class="pp-more__grid">
+<article class="pp-quick" data-more><p class="pp-quick__top"><span class="pp-quick__name">Magnetic Parts and Tool Tray</span></p><p class="pp-quick__line">“Something to keep the small parts from disappearing. We help EHS teams keep the details in order. A quick call would be great if you are open to it. Peg Hopkins, PHI Environmental Consulting”</p><p class="pp-quick__use">It holds screws, small parts and tools in place during inspections and equipment checks so nothing rolls away.</p><a class="pp-quick__talk" href="#book" data-idea="Magnetic Parts and Tool Tray">Book a 15-minute walkthrough</a></article>
+<article class="pp-quick" data-more><p class="pp-quick__top"><span class="pp-quick__name">Anti-Fog Safety Glasses</span></p><p class="pp-quick__line">“For clearer walkthroughs, no fogging allowed. We help teams see their compliance picture clearly too. I would enjoy a quick call if you are open to it. Peg Hopkins, PHI Environmental Consulting”</p><p class="pp-quick__use">They wear safety glasses every time they step on the floor, and a clear anti-fog pair makes the long walkthroughs easier.</p><a class="pp-quick__talk" href="#book" data-idea="Anti-Fog Safety Glasses">Book a 15-minute walkthrough</a></article>
+<article class="pp-quick" data-more><p class="pp-quick__top"><span class="pp-quick__name">Tag and Label Marker Set</span></p><p class="pp-quick__line">“For the next round of tags and labels. We help EHS teams keep labeling and recordkeeping simple. I would enjoy a quick call if that would help. Peg Hopkins, PHI Environmental Consulting”</p><p class="pp-quick__use">They mark tags, labels, drums and lockout points constantly, and markers that hold up on any surface get used every week.</p><a class="pp-quick__talk" href="#book" data-idea="Tag and Label Marker Set">Book a 15-minute walkthrough</a></article>
+</div>
+</div>
+</section>
+<section class="section section--wash pp-steps" id="how-it-works">
+<div class="wrap">
+<div class="pp-steps__head">
+<p class="kicker"><span class="hand">how it works</span></p>
+<h2>Three steps from your list to booked meetings</h2>
+<p class="pp-steps__intro">Here’s what happens once we say go.</p>
+</div>
+<ol class="pp-steps__list">
+<li class="pp-step">
+<p class="pp-step__num" aria-hidden="true">01</p>
+<h3>We pick the list</h3>
+<p>We pick 50 of your best-fit prospects.</p>
+<p class="pp-step__tag">built with you</p>
+</li>
+<li class="pp-step">
+<p class="pp-step__num" aria-hidden="true">02</p>
+<h3>We send the box</h3>
+<p>We send each one a box built for them, with a handwritten card.</p>
+<p class="pp-step__tag">you approve it first</p>
+</li>
+<li class="pp-step">
+<p class="pp-step__num" aria-hidden="true">03</p>
+<h3>You book the meeting</h3>
+<p>You follow up and book the meeting.</p>
+<p class="pp-step__tag">we tell you when it lands</p>
+</li>
 </ol>
 </div>
 </section>
-<section class="section v6-cta" id="book">
+<section class="section pp-included-sec" id="included">
 <div class="wrap">
-<div class="v6-cta__box">
+<p class="kicker"><span class="hand">no fine print</span></p>
+<h2>What’s in every box</h2>
+<div class="pp-proof">
+<figure>
+<img class="photo" src="/images/box-contents.jpg" width="900" height="600" alt="Open package with engraved coasters, a handwritten card, and a QR code card" loading="lazy">
+<figcaption>What lands on their desk: the item, a handwritten card, and a QR code to a page like this one.</figcaption>
+</figure>
+<div class="panel panel--include">
+<h3>Included</h3>
+<ul>
+<li>The list, built with you and verified twice</li>
+<li>The item, personalized to each prospect</li>
+<li>A handwritten card in your rep’s name</li>
+<li>A page with each prospect’s name on it, linked from a QR code in the box</li>
+<li>Tracked shipping and a heads-up when each one lands</li>
+<li>An email sequence in your rep’s name, starting the day after delivery</li>
+<li>Every card and email sent to you for approval before it goes</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ Book a call ============ -->
+<section class="section section--wash" id="book">
+<div class="wrap">
+<div class="pp-book">
+<div class="pp-book__copy">
 <p class="kicker"><span class="hand">fifteen minutes</span></p>
-<h2>Want to see how this would work for Lone Star EHS Partners?</h2>
-<p>I’d love to walk you through it and explain how the whole process works.</p>
-<a class="btn btn--primary" id="v6-book" href="https://calendly.com/salvador-well-sent-mail/new-meeting" target="_blank" rel="noopener noreferrer">Book a 15-minute walkthrough</a>
-<p class="v6-sig">Salvador</p>
+<h2>Want to talk these through, Jamie?</h2>
+<p>Pick a time that works. Here’s what we’ll cover:</p>
+<ul class="pp-book__steps">
+<li>Who you’re trying to reach, and whether their addresses are findable</li>
+<li>Which of the three ideas fits, or what would</li>
+<li>The next steps</li>
+</ul>
+<p class="pp-qual">This works when one new client is worth $5,000 or more to you. If it’s not, I’ll say so on the call, and the three ideas are yours to use.</p>
+<p class="pp-book__sig">Talk soon,<span>Salvador</span></p>
+<p class="pp-book__alt">Calendar not showing? <a id="pp-cal" href="https://calendly.com/salvador-well-sent-mail/new-meeting?name=Jamie&amp;email=test@wellsentmail.com" target="_blank" rel="noopener noreferrer">Open it in a new tab<span class="visually-hidden"> (opens in a new tab)</span></a>, or send me a message below. I reply within 12–24 hours, Monday through Friday.</p>
+<div class="msg-block" id="message">
+          <form class="msg-form" data-msg-form>
+            <div class="msg-form__row">
+              <div class="field">
+                <label for="pm-name">Your name</label>
+                <input id="pm-name" name="name" type="text" autocomplete="name" required value="Jamie">
+              </div>
+              <div class="field">
+                <label for="pm-email">Your email</label>
+                <input id="pm-email" name="email" type="email" autocomplete="email" required value="test@wellsentmail.com">
+              </div>
+            </div>
+            <div class="field">
+              <label for="pm-msg">Message</label>
+              <textarea id="pm-msg" name="message" rows="5" required></textarea>
+            </div>
+            <div class="msg-hp" aria-hidden="true"><label>Leave this empty<input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label></div>
+            <button class="btn btn--primary" type="submit">Send message</button>
+            <p class="msg-error" hidden>That didn’t go through. You can email me directly at Salvador@wellsentmail.com.</p>
+          </form>
+          <div class="msg-done" tabindex="-1" hidden>
+            <h3>Got it.</h3>
+            <p>I’ll reply within 12–24 hours, Monday through Friday.</p>
+          </div>
+        </div>
+</div>
+<iframe class="pp-cal" id="pp-cal-frame" title="Book a call with Salvador" loading="lazy" src="https://calendly.com/salvador-well-sent-mail/new-meeting?embed_domain=www.wellsentmail.com&amp;embed_type=Inline&amp;hide_gdpr_banner=1&amp;name=Jamie&amp;email=test@wellsentmail.com"></iframe>
 </div>
 </div>
 </section>
@@ -364,7 +589,7 @@ p{text-wrap:pretty;} h1,h2,h3{text-wrap:balance;}
 <span class="visually-hidden"> (opens in a new tab)</span></a>
 <nav class="footer__links" aria-label="Footer">
 <a href="https://www.linkedin.com/in/salvador-santolucito-b04a34363/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
-<a href="mailto:Salvador@wellsentmail.com">Salvador@wellsentmail.com</a>
+<a href="#message">Send a message</a>
 </nav>
 </div>
 <p class="footer__fine">© <span id="year">2026</span> Well Sent Mail. Built and shipped from Austin, TX.</p>
@@ -373,18 +598,60 @@ p{text-wrap:pretty;} h1,h2,h3{text-wrap:balance;}
 <script>
 (function(){
 var d = document.body.dataset;
-var b = document.getElementById('v6-book');
-if(b && d.firstName && d.firstName.indexOf('{{') === -1){
-b.href = 'https://calendly.com/salvador-well-sent-mail/new-meeting?name=' + encodeURIComponent(d.firstName) + '&email=' + encodeURIComponent(d.email || '');
-b.addEventListener('click', function(){ window.ppTrack && window.ppTrack('book_clicked'); });
+var filled = d.firstName && d.firstName.indexOf('{{') === -1;
+// Calendly: encoded URLs; a1 pre-fills the first custom question on the event.
+function calUrl(inline, idea){
+var q = [];
+if(inline) q.push('embed_domain=www.wellsentmail.com', 'embed_type=Inline', 'hide_gdpr_banner=1');
+q.push('name=' + encodeURIComponent(d.firstName || ''), 'email=' + encodeURIComponent(d.email || ''));
+if(idea) q.push('a1=' + encodeURIComponent('Interested in: ' + idea));
+return 'https://calendly.com/salvador-well-sent-mail/new-meeting?' + q.join('&');
+}
+var calLink = document.getElementById('pp-cal');
+var calFrame = document.getElementById('pp-cal-frame');
+if(filled){
+if(calLink) calLink.href = calUrl(false);
+if(calFrame) calFrame.src = calUrl(true);
+document.querySelectorAll('[data-idea]').forEach(function(a){
+a.addEventListener('click', function(){
+var idea = a.getAttribute('data-idea');
+if(calFrame) calFrame.src = calUrl(true, idea);
+if(calLink) calLink.href = calUrl(false, idea);
+window.ppTrack && window.ppTrack('idea_clicked', { idea: idea });
+});
+});
+}
+// Video: hide the block if no URL was supplied; convert YouTube links to embeds with the JS API on.
+var wrap = document.getElementById('pp-video-wrap');
+var f = document.getElementById('pp-video');
+if(f){
+var s = f.getAttribute('src') || '';
+if(!s || s.indexOf('{{') !== -1){ if(wrap){ var sec = wrap.closest('section'); (sec || wrap).classList.add('is-hidden'); } }
+else {
+var m = s.match(/(?:youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+if(m){ f.src = 'https://www.youtube-nocookie.com/embed/' + m[1] + '?rel=0&modestbranding=1&enablejsapi=1'; }
+}
 }
 document.querySelectorAll('img[data-mockup]').forEach(function(img){
 var s = img.getAttribute('src') || '';
-if(!s){ img.hidden = true; img.removeAttribute('src'); }
+if(!s || s.indexOf('{{') !== -1){ img.hidden = true; img.removeAttribute('src'); }
 img.addEventListener('error', function(){ img.hidden = true; });
 });
+var more = document.getElementById('more-ideas');
+if(more){
+var shown = 0;
+more.querySelectorAll('[data-more]').forEach(function(el){
+var nm = el.querySelector('.pp-quick__name');
+var v = nm ? nm.textContent.trim() : '';
+if(!v || v.indexOf('{{') !== -1){ el.classList.add('is-hidden'); } else { shown++; }
+});
+if(!shown) more.classList.add('is-hidden');
+}
 var nav = document.querySelector('.nav');
-if(nav){ var on = function(){ nav.classList.toggle('nav--scrolled', window.scrollY > 8); }; on(); window.addEventListener('scroll', on, { passive:true }); }
+if(nav){
+var onScroll = function(){ nav.classList.toggle('nav--scrolled', window.scrollY > 8); };
+onScroll(); window.addEventListener('scroll', onScroll, { passive:true });
+}
 var y = document.getElementById('year'); if(y){ y.textContent = new Date().getFullYear(); }
 })();
 </script>
@@ -418,6 +685,43 @@ var s = document.createElement('script'); s.src = 'https://www.youtube.com/ifram
 window.addEventListener('message', function(e){
 if(typeof e.origin === 'string' && e.origin.indexOf('calendly.com') !== -1 && e.data && e.data.event === 'calendly.event_scheduled'){ track('call_booked'); }
 });
+})();
+</script>
+<script>
+(function(){
+  // ---- Forms: send to FORM_ENDPOINT (set at the top of this file) ----
+  function wsmSend(form, extra){
+    var d = new URLSearchParams(new FormData(form));
+    Object.keys(extra).forEach(function(k){ d.append(k, extra[k]); });
+    return fetch(FORM_ENDPOINT, { method:'POST', body:d, headers:{ 'Accept':'application/json' } })
+      .then(function(r){ if(!r.ok) throw new Error('send failed'); });
+  }
+  function wsmMailto(subject, body){
+    window.location.href = 'mailto:Salvador@wellsentmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  }
+  document.querySelectorAll('form[data-msg-form]').forEach(function(form){
+    var done = form.parentNode.querySelector('.msg-done');
+    var err = form.querySelector('.msg-error');
+    var btn = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var d = new FormData(form);
+      if(d.get('_gotcha')){ form.hidden = true; done.hidden = false; return; }   // spam bot filled the hidden field
+      var subject = 'Website message from ' + d.get('name');
+      if(typeof FORM_ENDPOINT !== 'string' || !FORM_ENDPOINT){
+        wsmMailto(subject, d.get('message') + '\n\n' + d.get('name') + ' (' + d.get('email') + ')');
+        return;
+      }
+      var label = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Sending...'; err.hidden = true;
+      var extra = { form:'message', page:location.pathname, _subject:subject };
+      var slug = document.body.getAttribute('data-slug');
+      if(slug && slug.indexOf('{{') === -1) extra.slug = slug;
+      wsmSend(form, extra)
+        .then(function(){ form.hidden = true; done.hidden = false; done.focus(); })
+        .catch(function(){ btn.disabled = false; btn.textContent = label; err.hidden = false; });
+    });
+  });
 })();
 </script>
 </body>
