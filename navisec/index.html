@@ -323,10 +323,12 @@ h1,h2,h3{text-wrap:balance;}
 .v6-targets{display:flex;flex-direction:column;gap:clamp(1.75rem,4vw,2.5rem);margin-top:clamp(2.5rem,5vw,3.75rem);text-align:left;}
 .v6-targets{display:flex;flex-direction:column;gap:clamp(1.75rem,4vw,2.75rem);padding-bottom:clamp(3rem,6vw,5rem);}
 .v6-t{display:grid;grid-template-columns:1fr;background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);box-shadow:6px 6px 0 var(--ink);overflow:hidden;}
-@media (min-width:860px){.v6-t{grid-template-columns:0.9fr 1.1fr;}}
+
 .v6-t__media{background:var(--wash);border-bottom:2px solid var(--ink);}
-@media (min-width:860px){.v6-t__media{border-bottom:0;border-right:2px solid var(--ink);}}
-.v6-t__img{width:100%;height:100%;aspect-ratio:4 / 3;object-fit:cover;}
+
+.v6-t__img{display:block;width:100%;height:auto;max-width:1024px;margin:0 auto;object-fit:contain;}
+.v6-t__media a{display:block;cursor:zoom-in;}
+.v6-t__zoom{display:block;text-align:center;font-size:0.9rem;padding:0.5rem;text-decoration:underline;}
 .v6-t__img[hidden]{display:none;}
 .v6-t__body{padding:clamp(1.25rem,3vw,2rem);display:flex;flex-direction:column;gap:1.1rem;}
 .v6-t__num{font-size:0.74rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);margin:0;}
@@ -388,7 +390,7 @@ h1,h2,h3{text-wrap:balance;}
 </div>
 <div class="v6-targets">
 <article class="v6-t">
-<div class="v6-t__media"><img class="v6-t__img" src="/navisec/pkg-1.jpg" alt="Mockup of A rugged multi-tool engraved with their company name for Tampa Brass &amp; Aluminum (Town ’N’ Country, Tampa)" loading="lazy" data-mockup></div>
+<div class="v6-t__media"><a href="/navisec/pkg-1.jpg" target="_blank" rel="noopener"><img class="v6-t__img" src="/navisec/pkg-1.jpg" alt="Mockup of A rugged multi-tool engraved with their company name for Tampa Brass &amp; Aluminum (Town ’N’ Country, Tampa)" width="1024" height="768" data-mockup></a><a class="v6-t__zoom" href="/navisec/pkg-1.jpg" target="_blank" rel="noopener">Open full-size image</a></div>
 <div class="v6-t__body">
 <div><p class="v6-t__num">Target 01</p><h2>Tampa Brass &amp; Aluminum (Town ’N’ Country, Tampa)</h2></div>
 <div class="v6-why"><p class="pp-label">Why they fit</p><p>Tampa Brass &amp; Aluminum machines missile parts and submarine components for the Air Force and Navy. In September 2026 it announced a $58 million expansion of its Tampa headquarters with 50 new jobs after winning a series of military contracts (Business Observer, Sept 14, 2026). As a manufacturer selling to the Department of Defense, it has to meet CMMC, so there’s a real reason to talk.</p></div>
@@ -398,7 +400,7 @@ h1,h2,h3{text-wrap:balance;}
 </div>
 </article>
 <article class="v6-t">
-<div class="v6-t__media"><img class="v6-t__img" src="/navisec/pkg-2.jpg" alt="Mockup of A book picked for their role, with a personal inscription for Labarium (Tampa Medical &amp; Research District)" loading="lazy" data-mockup></div>
+<div class="v6-t__media"><a href="/navisec/pkg-2.jpg" target="_blank" rel="noopener"><img class="v6-t__img" src="/navisec/pkg-2.jpg" alt="Mockup of A book picked for their role, with a personal inscription for Labarium (Tampa Medical &amp; Research District)" width="1024" height="768" data-mockup></a><a class="v6-t__zoom" href="/navisec/pkg-2.jpg" target="_blank" rel="noopener">Open full-size image</a></div>
 <div class="v6-t__body">
 <div><p class="v6-t__num">Target 02</p><h2>Labarium (Tampa Medical &amp; Research District)</h2></div>
 <div class="v6-why"><p class="pp-label">Why they fit</p><p>Labarium is a diagnostics, genomics and data company that moved its headquarters to Tampa after buying two local labs. It plans to invest more than $2 million and grow from about 30 to more than 100 employees (Tampa Bay Business Journal, Oct 20, 2026). Patient and genetic data, two newly combined lab systems and HIPAA put it squarely in NaviSec’s healthcare work.</p></div>
@@ -408,7 +410,7 @@ h1,h2,h3{text-wrap:balance;}
 </div>
 </article>
 <article class="v6-t">
-<div class="v6-t__media"><img class="v6-t__img" src="/navisec/pkg-3.jpg" alt="Mockup of An Ybor City cigar-box gift of Tampa coffee and chocolate for the whole office for Oncore Cloud Services (St. Petersburg)" loading="lazy" data-mockup></div>
+<div class="v6-t__media"><a href="/navisec/pkg-3.jpg" target="_blank" rel="noopener"><img class="v6-t__img" src="/navisec/pkg-3.jpg" alt="Mockup of An Ybor City cigar-box gift of Tampa coffee and chocolate for the whole office for Oncore Cloud Services (St. Petersburg)" width="1024" height="768" data-mockup></a><a class="v6-t__zoom" href="/navisec/pkg-3.jpg" target="_blank" rel="noopener">Open full-size image</a></div>
 <div class="v6-t__body">
 <div><p class="v6-t__num">Target 03</p><h2>Oncore Cloud Services (St. Petersburg)</h2></div>
 <div class="v6-why"><p class="pp-label">Why they fit</p><p>Oncore is a managed technology services provider that moved its U.S. headquarters from Atlanta to St. Petersburg in October 2025, has added local hires, and plans 10 more over three years (Pinellas County Economic Development, May 2026). It serves compliance-heavy finance and healthcare clients, so it’s a natural MSP partner for NaviSec’s security work, not a competitor.</p></div>
